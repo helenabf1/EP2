@@ -16,3 +16,13 @@ def guardar_dado (rolados, guardados, num):
     listafinal.append(rolados)
     listafinal.append(guardados)
     return listafinal
+
+def remover_dado (rolados, estoque, n):
+    nova = []
+    rolados.append(estoque[n])
+    del estoque[n]
+    nova.append(rolados)
+    nova.append(estoque)
+    return nova
+
+
