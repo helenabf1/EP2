@@ -31,5 +31,8 @@ def calcula_pontos_regra_simples (lista):
         novo[num] += num
     return novo
         
-
-
+def calcula_pontos_soma (lista):
+    total = 0
+    for n in lista:
+        total = total + n
+    return total
