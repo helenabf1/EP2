@@ -37,8 +37,11 @@ def calcula_pontos_soma (lista):
         total = total + n
     return total
 
-def calcula_pontos_sequencia_baixa (lista):
-    if lista == [1, 2, 3, 4] or lista == [2, 3, 4, 5] or lista == [3, 4, 5, 6]:
+def calcula_pontos_sequencia_baixa(lista):
+    if 1 in lista and 2 in lista and 3 in lista and 4 in lista:
         return 15
-    else:
-        return 0
+    if 2 in lista and 3 in lista and 4 in lista and 5 in lista:
+        return 15
+    if 3 in lista and 4 in lista and 5 in lista and 6 in lista:
+        return 15
+    return 0
