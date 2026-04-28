@@ -73,3 +73,16 @@ def calcula_pontos_full_house (lista):
             soma += num
         return soma
     return 0
+
+def calcula_pontos_quadra(lista):
+    for numero in lista:
+        count = 0
+        for numero2 in lista:
+            if numero == numero2:
+                count = count + 1
+        if count >= 4:
+            total = 0
+            for valor in lista:
+                total = total + valor
+            return total
+    return 0
