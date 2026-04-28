@@ -86,3 +86,14 @@ def calcula_pontos_quadra(lista):
                 total = total + valor
             return total
     return 0
+
+def calcula_pontos_quina (lista):
+    for num in lista:
+        count = 0
+
+        for n in lista:
+            if n == num:
+                count += 1
+        if count >= 5:
+            return 50
+    return 0
