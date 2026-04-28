@@ -52,3 +52,24 @@ def calcula_pontos_sequencia_alta (lista):
     elif 2 in lista and 3 in lista and 4 in lista and 5 in lista and 6 in lista:
         return 30
     return 0
+
+def calcula_pontos_full_house (lista):
+    valores = []
+    for num in lista:
+        if num not in valores:
+            valores.append(num)
+    if len(valores) != 2:
+        return 0
+    count1 = 0
+    count2 = 0
+    for num in lista:
+        if num == valores[0]:
+            count1 += 1
+        else:
+            count2 += 1
+    if count1 == 3 and count2 == 2 or count1 == 2 and count2 == 3:
+        soma = 0
+        for num in lista:
+            soma += num
+        return soma
+    return 0
