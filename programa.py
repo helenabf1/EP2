@@ -47,8 +47,8 @@ for rodada in range(12):
         
         elif opcao == '0':
             marcou_jogada = False
+            print('Digite a combinação desejada:')
             while marcou_jogada == False:
-                print('Digite a combinação desejada:')
                 categoria = input()
 
                 dados = rolados + guardados
