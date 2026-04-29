@@ -46,29 +46,33 @@ for rodada in range(12):
             imprime_cartela(cartela)
         
         elif opcao == '0':
-            print('Digite a combinação desejada:')
-            categoria = input()
+            marcou_jogada = False
+            while marcou_jogada == False:
+                print('Digite a combinação desejada:')
+                categoria = input()
 
-            dados = rolados + guardados
-            marcou = False
+                dados = rolados + guardados
+                encontrou = False
 
-            for chave in cartela['regra_simples']:
-                if str(chave) == categoria:
-                    marcou = True
-                    if cartela['regra_simples'][chave] != -1:
-                        print ('Essa combinação já foi utilizada.')
+                for chave in cartela['regra_simples']:
+                    if str(chave) == categoria:
+                        encontrou = True
+                        if cartela['regra_simples'][chave] != -1:
+                            print ('Essa combinação já foi utilizada.')
+                        else:
+                            faz_jogada(dados, categoria, cartela)
+                            fim_rodada = True
+                            marcou_jogada = True
+                if encontrou == False:
+                    if categoria in cartela ['regra_avancada']:
+                        if cartela['regra_avancada'][categoria] != -1:
+                            print('Essa combinação já foi utilizada.')
+                        else:
+                            faz_jogada(dados, categoria, cartela)
+                            fim_rodada = True
+                            marcou_jogada = True
                     else:
-                        faz_jogada(dados, categoria, cartela)
-                        fim_rodada = True
-            if marcou == False:
-                if categoria in cartela ['regra_avancada']:
-                    if cartela['regra_avancada'][categoria] != -1:
-                        print('Essa combinação já foi utilizada.')
-                    else:
-                        faz_jogada(dados, categoria, cartela)
-                        fim_rodada = True
-                else:
-                    print ('Combinação inválida. Tente novamente.')
+                        print ('Combinação inválida. Tente novamente.')
         else:
             print ('Opção inválida. Tente novamente.')
 
