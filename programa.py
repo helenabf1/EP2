@@ -64,8 +64,7 @@ for rodada in range(12):
                             fim_rodada = True
                             marcou_jogada = True
                 if encontrou == False:
-                    if categoria in cartela ['regra_avancada']:
-                        encontrou = True
+                    if categoria in cartela['regra_avancada']:
                         if cartela['regra_avancada'][categoria] != -1:
                             print('Essa combinação já foi utilizada.')
                         else:
