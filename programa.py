@@ -55,7 +55,7 @@ for rodada in range(12):
                 encontrou = False
 
                 for chave in cartela['regra_simples']:
-                    if str(chave) == categoria:
+                    if encontrou == False and str(chave) == categoria:
                         encontrou = True
                         if cartela['regra_simples'][chave] != -1:
                             print ('Essa combinação já foi utilizada.')
@@ -65,6 +65,7 @@ for rodada in range(12):
                             marcou_jogada = True
                 if encontrou == False:
                     if categoria in cartela ['regra_avancada']:
+                        encontrou = True
                         if cartela['regra_avancada'][categoria] != -1:
                             print('Essa combinação já foi utilizada.')
                         else:
