@@ -18,7 +18,7 @@ for rodada in range(12):
         if opcao == '1':
             print ('Digite o índice do dado a ser guardado (0 a 4):')
             indice = int(input())
-            if indice >= 0 and indice < len(rodados):
+            if indice >= 0 and indice < len(rolados):
                 listas = guardar_dado(rolados,guardados,indice)
                 rolados = listas[0]
                 guardados = listas[1]
@@ -28,7 +28,7 @@ for rodada in range(12):
         elif opcao == '2':
             print ('Digite o índice do dado a ser removido (0 a 4):')
             indice = int(input())
-            if indice >= 0 and indice<len(rodados):
+            if indice >= 0 and indice<len(rolados):
                 listas = remover_dado(rolados,guardados,indice)
                 rolados = listas[0]
                 guardados = listas[1]
