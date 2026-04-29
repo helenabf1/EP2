@@ -116,5 +116,4 @@ def faz_jogada (dados, categoria, cartela):
     else:
         if categoria in cartela['regra_avancada']:
             cartela['regra_avancada'][categoria] = calcula_pontos_regra_avancada(dados)[categoria]
-    
     return cartela
