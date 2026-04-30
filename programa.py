@@ -8,10 +8,13 @@ for rodada in range(12):
     guardados = []
     rolados = rolar_dados(5)
     rerrolagens = 0
+    mostrar_menu = True
 
     while True:
-        print(f'Dados rolados: {rolados}')
-        print(f'Dados guardados: {guardados}')
+        if mostrar_menu == True:
+            print(f'Dados rolados: {rolados}')
+            print(f'Dados guardados: {guardados}')
+        mostrar_menu = True
         print('Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:')
         opcao = input()
 
@@ -63,6 +66,7 @@ for rodada in range(12):
 
         else:
             print('Opção inválida. Tente novamente.')
+            mostrar_menu = False
 
 pontuacao = 0
 soma_simples = 0
