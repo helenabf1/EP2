@@ -1,44 +1,39 @@
 from funcoes import *
+
 cartela = {'regra_simples': {1: -1, 2: -1, 3: -1, 4: -1, 5: -1, 6: -1}, 'regra_avancada': {'sem_combinacao': -1, 'quadra': -1, 'full_house': -1, 'sequencia_baixa': -1, 'sequencia_alta': -1, 'cinco_iguais': -1}}
+
 imprime_cartela(cartela)
 
 for rodada in range(12):
-    rolados = rolar_dados(5)
     guardados = []
+    rolados = rolar_dados(5)
     rerrolagens = 0
-    fim_rodada = False
-    mostrar_estado = True
+    mostrar_menu = True
 
+    fim_rodada = False
     while fim_rodada == False:
-        if mostrar_estado == True:
+        if mostrar_menu == True:
             print(f'Dados rolados: {rolados}')
             print(f'Dados guardados: {guardados}')
-            print('Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:')
-            opcao = input()
-        else:
-            print('Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:')
-            opcao = input()
-        mostrar_estado = True
+        print('Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:')
+        mostrar_menu = True
+        opcao = input()
 
         if opcao == '1':
             print('Digite o índice do dado a ser guardado (0 a 4):')
             indice = int(input())
-            if indice >= 0 and indice < len(rolados):
+            if 0 <= indice < len(rolados):
                 listas = guardar_dado(rolados, guardados, indice)
                 rolados = listas[0]
                 guardados = listas[1]
-            else:
-                print('Opção inválida. Tente novamente.')
 
         elif opcao == '2':
             print('Digite o índice do dado a ser removido (0 a 4):')
             indice = int(input())
-            if indice >= 0 and indice < len(guardados):
+            if 0 <= indice < len(guardados):
                 listas = remover_dado(rolados, guardados, indice)
                 rolados = listas[0]
                 guardados = listas[1]
-            else:
-                print('Opção inválida. Tente novamente.')
 
         elif opcao == '3':
             if rerrolagens >= 2:
@@ -74,7 +69,7 @@ for rodada in range(12):
 
         else:
             print('Opção inválida. Tente novamente.')
-            mostrar_estado = False
+            mostrar_menu = False
 
 pontuacao = 0
 soma_simples = 0
