@@ -13,10 +13,12 @@ for rodada in range(12):
         if mostrar_estado == True:
             print(f'Dados rolados: {rolados}')
             print(f'Dados guardados: {guardados}')
+            print('Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:')
+            opcao = input()
+        else:
+            print('Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:')
+            opcao = input()
         mostrar_estado = True
-        print('Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:')
-
-        opcao = input()
 
         if opcao == '1':
             print('Digite o índice do dado a ser guardado (0 a 4):')
