@@ -13,13 +13,10 @@ for rodada in range(12):
         if mostrar_estado == True:
             print(f'Dados rolados: {rolados}')
             print(f'Dados guardados: {guardados}')
-            print('Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:')
-            mostrar_estado = True
-            opcao = input()
-        else:
-            print('Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:')
-            mostrar_estado = True
-            opcao = input()
+        mostrar_estado = True
+        print('Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:')
+
+        opcao = input()
 
         if opcao == '1':
             print('Digite o índice do dado a ser guardado (0 a 4):')
@@ -56,29 +53,22 @@ for rodada in range(12):
             marcou_jogada = False
             while marcou_jogada == False:
                 categoria = input()
-                dados = rolados + guardados
-                encontrou = False
-
-                for chave in cartela['regra_simples']:
-                    if str(chave) == categoria and encontrou == False:
-                        encontrou = True
-                        if cartela['regra_simples'][chave] != -1:
-                            print('Essa combinação já foi utilizada.')
-                        else:
-                            faz_jogada(dados, categoria, cartela)
-                            fim_rodada = True
-                            marcou_jogada = True
-
-                if encontrou == False:
-                    if categoria in cartela['regra_avancada']:
-                        if cartela['regra_avancada'][categoria] != -1:
-                            print('Essa combinação já foi utilizada.')
-                        else:
-                            faz_jogada(dados, categoria, cartela)
-                            fim_rodada = True
-                            marcou_jogada = True
+                if categoria in ['1', '2', '3', '4', '5', '6']:
+                    if cartela['regra_simples'][int(categoria)] != -1:
+                        print('Essa combinação já foi utilizada.')
                     else:
-                        print('Combinação inválida. Tente novamente.')
+                        faz_jogada(rolados + guardados, categoria, cartela)
+                        marcou_jogada = True
+                        fim_rodada = True
+                elif categoria in cartela['regra_avancada']:
+                    if cartela['regra_avancada'][categoria] != -1:
+                        print('Essa combinação já foi utilizada.')
+                    else:
+                        faz_jogada(rolados + guardados, categoria, cartela)
+                        marcou_jogada = True
+                        fim_rodada = True
+                else:
+                    print('Combinação inválida. Tente novamente.')
 
         else:
             print('Opção inválida. Tente novamente.')
