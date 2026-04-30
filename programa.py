@@ -8,15 +8,11 @@ for rodada in range(12):
     guardados = []
     rolados = rolar_dados(5)
     rerrolagens = 0
-    mostrar_menu = True
 
-    fim_rodada = False
-    while fim_rodada == False:
-        if mostrar_menu == True:
-            print(f'Dados rolados: {rolados}')
-            print(f'Dados guardados: {guardados}')
+    while True:
+        print(f'Dados rolados: {rolados}')
+        print(f'Dados guardados: {guardados}')
         print('Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:')
-        mostrar_menu = True
         opcao = input()
 
         if opcao == '1':
@@ -47,29 +43,26 @@ for rodada in range(12):
 
         elif opcao == '0':
             print('Digite a combinação desejada:')
-            marcou_jogada = False
-            while marcou_jogada == False:
+            while True:
                 categoria = input()
                 if categoria in ['1', '2', '3', '4', '5', '6']:
                     if cartela['regra_simples'][int(categoria)] != -1:
                         print('Essa combinação já foi utilizada.')
                     else:
                         faz_jogada(rolados + guardados, categoria, cartela)
-                        marcou_jogada = True
-                        fim_rodada = True
+                        break
                 elif categoria in cartela['regra_avancada']:
                     if cartela['regra_avancada'][categoria] != -1:
                         print('Essa combinação já foi utilizada.')
                     else:
                         faz_jogada(rolados + guardados, categoria, cartela)
-                        marcou_jogada = True
-                        fim_rodada = True
+                        break
                 else:
                     print('Combinação inválida. Tente novamente.')
+            break
 
         else:
             print('Opção inválida. Tente novamente.')
-            mostrar_menu = False
 
 pontuacao = 0
 soma_simples = 0
